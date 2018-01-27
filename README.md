@@ -7,7 +7,7 @@ A GitHub App built with Probot that checks if someone approved a pull request an
 
 ## Use
 
-The GitHub app is currently private, because I'm still searching the server on which I'll deploy it. You will have to run your own instance to make it work for you at the moment.
+The GitHub app is public, but running on a limited server. This is meant for test purposes only, and the app can be shut down at any moment without notice. So feel free to experiment, but until I find a better server, this is not meant for a real use.
 
 ## Contributing :tada:
 This is the very beginning of the project, so I will be more than happy to hear your suggestions (issues or PRs)!
