@@ -1,0 +1,25 @@
+{
+  "event": "pull_request_review",
+  "payload": {
+    "action": "submitted",
+    "pull_request": {
+      "number": 1,
+      "user": {
+        "login": "user"
+      },
+      "title": "This is a pr",
+      "head": {
+        "sha": "sha"
+      }
+    },
+    "repository": {
+      "name": "testing-things",
+      "owner": {
+        "login": "user"
+      }
+    },
+    "installation": {
+      "id": 1234
+    }
+  }
+}
