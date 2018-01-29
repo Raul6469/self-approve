@@ -109,7 +109,7 @@ describe('Commit author who requested changes', () => {
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
       'context': 'wolfreview',
-      'description': 'Reviews looks ok so far',
+      'description': 'Reviews are ok',
       'owner': 'user',
       'repo': 'testing-things',
       'sha': 'sha',
@@ -167,7 +167,7 @@ describe('No matching author and positive reviewer', () => {
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
       'context': 'wolfreview',
-      'description': 'Reviews looks ok so far',
+      'description': 'Reviews are ok',
       'owner': 'user',
       'repo': 'testing-things',
       'sha': 'sha',

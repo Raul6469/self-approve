@@ -44,7 +44,7 @@ describe('Default behaviour', () => {
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
       'context': 'wolfreview',
-      'description': 'Reviews looks ok so far',
+      'description': 'Reviews are ok',
       'owner': 'user',
       'repo': 'testing-things',
       'sha': 'sha',
