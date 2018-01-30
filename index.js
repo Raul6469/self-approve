@@ -1,6 +1,6 @@
 module.exports = probotPlugin
 
-const checkReviews = require('./lib/check-reviews')
+const main = require('./lib/main')
 
 function probotPlugin (robot) {
   robot.on([
@@ -8,5 +8,5 @@ function probotPlugin (robot) {
     'pull_request.synchronize',
     'pull_request_review.submitted',
     'pull_request_review.dismissed'
-  ], checkReviews.bind(null, robot))
+  ], main.bind(null, robot))
 }
