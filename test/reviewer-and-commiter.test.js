@@ -3,7 +3,7 @@ const plugin = require('..')
 
 const payload = require('./events/review-submitted')
 
-describe('Commit author who approved changes', () => {
+describe('Checking commit authors and reviewers', () => {
   let robot
   let github
 
@@ -51,7 +51,7 @@ describe('Commit author who approved changes', () => {
     robot.auth = () => Promise.resolve(github)
   })
 
-  it('Should set the commit status to failure', async () => {
+  it('Should set the commit status to failure when a commiter approved changes', async () => {
     await robot.receive(payload)
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
@@ -64,57 +64,19 @@ describe('Commit author who approved changes', () => {
       'target_url': 'https://github.com/apps/wolfreview'
     })
   })
-})
 
-describe('Commit author who requested changes', () => {
-  let robot
-  let github
+  it('Should set the commit status to success when a commiter requested changes', async () => {
+    github.pullRequests.getReviews = jest.fn().mockReturnValue(Promise.resolve({
+      data: [
+        {
+          user: {
+            login: 'User1'
+          },
+          state: 'CHANGES_REQUESTED'
+        }
+      ]
+    }))
 
-  beforeEach(() => {
-    robot = createRobot()
-    plugin(robot)
-
-    github = {
-      repos: {
-        createStatus: jest.fn(),
-        getContent: jest.fn().mockReturnValue(Promise.resolve({
-          data: {
-            content: 'cmV2aWV3Y2hlY2tpbmc6IHllcw==\n'
-          }
-        }))
-      },
-      pullRequests: {
-        getReviews: jest.fn().mockReturnValue(Promise.resolve({
-          data: [
-            {
-              user: {
-                login: 'User1'
-              },
-              state: 'CHANGES_REQUESTED'
-            }
-          ]
-        })),
-        getCommits: jest.fn().mockReturnValue(Promise.resolve({
-          data: [
-            {
-              author: {
-                login: 'User2'
-              }
-            },
-            {
-              author: {
-                login: 'User1'
-              }
-            }
-          ]
-        }))
-      }
-    }
-
-    robot.auth = () => Promise.resolve(github)
-  })
-
-  it('Should set the commit status to success', async () => {
     await robot.receive(payload)
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
@@ -127,57 +89,37 @@ describe('Commit author who requested changes', () => {
       'target_url': 'https://github.com/apps/wolfreview'
     })
   })
-})
 
-describe('No matching author and positive reviewer', () => {
-  let robot
-  let github
+  it('Should set the commit status to success where there is no common reviewer and commiter', async () => {
+    github.pullRequests.getReviews = jest.fn().mockReturnValue(Promise.resolve({
+      data: [
+        {
+          user: {
+            login: 'User3'
+          },
+          state: 'APPROVED'
+        }
+      ]
+    }))
 
-  beforeEach(() => {
-    robot = createRobot()
-    plugin(robot)
+    await robot.receive(payload)
 
-    github = {
-      repos: {
-        createStatus: jest.fn(),
-        getContent: jest.fn().mockReturnValue(Promise.resolve({
-          data: {
-            content: 'cmV2aWV3Y2hlY2tpbmc6IHllcw==\n'
-          }
-        }))
-      },
-      pullRequests: {
-        getReviews: jest.fn().mockReturnValue(Promise.resolve({
-          data: [
-            {
-              user: {
-                login: 'User3'
-              },
-              state: 'APPROVED'
-            }
-          ]
-        })),
-        getCommits: jest.fn().mockReturnValue(Promise.resolve({
-          data: [
-            {
-              author: {
-                login: 'User2'
-              }
-            },
-            {
-              author: {
-                login: 'User1'
-              }
-            }
-          ]
-        }))
-      }
-    }
-
-    robot.auth = () => Promise.resolve(github)
+    expect(github.repos.createStatus).toHaveBeenCalledWith({
+      'context': 'wolfreview',
+      'description': 'Reviews are ok',
+      'owner': 'user',
+      'repo': 'testing-things',
+      'sha': 'sha',
+      'state': 'success',
+      'target_url': 'https://github.com/apps/wolfreview'
+    })
   })
 
-  it('Should set the commit status to success', async () => {
+  it('Should set the commit status to success if no reviews', async () => {
+    github.pullRequests.getReviews = jest.fn().mockReturnValue(Promise.resolve({
+      data: []
+    }))
+
     await robot.receive(payload)
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
