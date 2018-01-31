@@ -1,4 +1,4 @@
-# self-review
+# self-approve
 [![Build Status](https://travis-ci.org/Raul6469/self-approve.svg?branch=master)](https://travis-ci.org/Raul6469/self-approve)
 [![codecov](https://codecov.io/gh/Raul6469/self-approve/branch/master/graph/badge.svg)](https://codecov.io/gh/Raul6469/self-approve)
 [![Maintainability](https://api.codeclimate.com/v1/badges/fca6df33820f2d140565/maintainability)](https://codeclimate.com/github/Raul6469/self-approve/maintainability)
