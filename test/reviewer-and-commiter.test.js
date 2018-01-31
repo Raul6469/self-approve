@@ -55,13 +55,13 @@ describe('Checking commit authors and reviewers', () => {
     await robot.receive(payload)
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
-      'context': 'wolfreview',
+      'context': 'codereview/self-approve',
       'description': 'There is a commit author that approved changes',
       'owner': 'user',
       'repo': 'testing-things',
       'sha': 'sha',
       'state': 'failure',
-      'target_url': 'https://github.com/apps/wolfreview'
+      'target_url': 'https://github.com/apps/self-approve'
     })
   })
 
@@ -80,13 +80,13 @@ describe('Checking commit authors and reviewers', () => {
     await robot.receive(payload)
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
-      'context': 'wolfreview',
+      'context': 'codereview/self-approve',
       'description': 'Reviews are ok',
       'owner': 'user',
       'repo': 'testing-things',
       'sha': 'sha',
       'state': 'success',
-      'target_url': 'https://github.com/apps/wolfreview'
+      'target_url': 'https://github.com/apps/self-approve'
     })
   })
 
@@ -105,13 +105,13 @@ describe('Checking commit authors and reviewers', () => {
     await robot.receive(payload)
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
-      'context': 'wolfreview',
+      'context': 'codereview/self-approve',
       'description': 'Reviews are ok',
       'owner': 'user',
       'repo': 'testing-things',
       'sha': 'sha',
       'state': 'success',
-      'target_url': 'https://github.com/apps/wolfreview'
+      'target_url': 'https://github.com/apps/self-approve'
     })
   })
 
@@ -123,13 +123,13 @@ describe('Checking commit authors and reviewers', () => {
     await robot.receive(payload)
 
     expect(github.repos.createStatus).toHaveBeenCalledWith({
-      'context': 'wolfreview',
+      'context': 'codereview/self-approve',
       'description': 'Reviews are ok',
       'owner': 'user',
       'repo': 'testing-things',
       'sha': 'sha',
       'state': 'success',
-      'target_url': 'https://github.com/apps/wolfreview'
+      'target_url': 'https://github.com/apps/self-approve'
     })
   })
 })
