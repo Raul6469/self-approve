@@ -1,6 +1,6 @@
 {
   "name": "wolfreview",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Enhanced code review requirements within GitHub",
   "main": "index.js",
   "scripts": {
