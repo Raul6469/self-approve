@@ -13,7 +13,12 @@ describe('Default behaviour', () => {
 
     github = {
       repos: {
-        createStatus: jest.fn()
+        createStatus: jest.fn(),
+        getContent: jest.fn().mockReturnValue(Promise.resolve({
+          data: {
+            content: 'cmV2aWV3Y2hlY2tpbmc6IHllcw==\n'
+          }
+        }))
       },
       pullRequests: {
         getReviews: jest.fn().mockReturnValue(Promise.resolve({
