@@ -6,6 +6,8 @@
 
 A GitHub App built with Probot that checks if someone approved a pull request AND authored commits in it. If so, the status is set to failure. This way, you can always be sure to have a fresh review before merging!
 
+![Example](assets/example.jpg)
+
 ## Use
 Works in addition to the "Require pull request reviews before merging" protected branch setting. This setting alone allows merging with one minimum positive review, submitted by any contributor as long as it's not the PR author, regardless of the commit authors. This app checks that there is no reviewer that contributed to this specific PR.
 
