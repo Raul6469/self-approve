@@ -13,12 +13,7 @@ describe('Checking commit authors and reviewers', () => {
 
     github = {
       repos: {
-        createStatus: jest.fn(),
-        getContent: jest.fn().mockReturnValue(Promise.resolve({
-          data: {
-            content: 'cmV2aWV3Y2hlY2tpbmc6IHllcw==\n'
-          }
-        }))
+        createStatus: jest.fn()
       },
       pullRequests: {
         getReviews: jest.fn().mockReturnValue(Promise.resolve({
