@@ -2,7 +2,6 @@
 .env
 node_modules
 private-key.pem
-package-lock.json
 .vscode
 coverage
 webhooks
