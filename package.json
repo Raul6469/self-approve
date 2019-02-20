@@ -9,6 +9,9 @@
     "coverage": "jest --coverage",
     "lint": "./node_modules/.bin/eslint ."
   },
+  "jest": {
+    "testURL": "http://localhost/"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
