@@ -18,7 +18,7 @@
     "probot": "6.0.0"
   },
   "devDependencies": {
-    "eslint": "5.15.2",
+    "eslint": "5.15.3",
     "eslint-config-standard": "11.0.0-beta.0",
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-node": "7.0.0",
