@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "probot": "^10.8.0"
+    "probot": "^12.2.8"
   },
   "devDependencies": {
     "eslint": "5.16.0",
