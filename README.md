@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This GitHub app is not available anymore and has been deleted on July 6th 2025
+
 # self-approve
 [![Build Status](https://travis-ci.org/Raul6469/self-approve.svg?branch=master)](https://travis-ci.org/Raul6469/self-approve)
 [![codecov](https://codecov.io/gh/Raul6469/self-approve/branch/master/graph/badge.svg)](https://codecov.io/gh/Raul6469/self-approve)
